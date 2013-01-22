@@ -23,15 +23,35 @@ class Cache:
             if self.time[key] == -1 or self.time[key] > time():
                 return self.mem[key]
             else:
+                self.delete(key)
                 return None
         else:
             return None
 
+    def delete(self,key):
+        '''删除键为key的条目'''
+        del self.mem[key]
+        del self.time[key]
+        return True
+
+def a_hard_function():
+    '''一个需要缓存的函数'''
+    print "getting result"
+    from time import sleep
+    import random
+    sleep(2)
+    print "done"
+    return random.randint(1,100)
+
 if __name__ == "__main__":
     cache = Cache()
-    t = time()
-    cache.set('a',100,3) #a的值是100,生存时间位3秒
-    cache.set('b',999)   #b的值是999,生存时间无限长
+    cache.set('a','aaaa',5)   #a的值是'aaaa',生存时间位5秒
+    cache.set('b',[1,2])      #b的值是[1,2],生存时间无限长
     while True:
+        result = cache.get("hard_func")
+        if result is None:
+            result = a_hard_function()
+            cache.set("hard_func",result,2)
         print cache.get('a'),
-        print cache.get('b')
+        print cache.get('b'),
+        print result
