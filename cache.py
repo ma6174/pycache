@@ -34,6 +34,11 @@ class Cache:
         del self.time[key]
         return True
 
+    def clear(self):
+        '''清空所有缓存'''
+        self.mem.clear()
+        self.time.clear()
+
 def a_hard_function():
     '''一个需要缓存的函数'''
     print "getting result"
