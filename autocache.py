@@ -12,7 +12,7 @@ _cache = {}
 
 def _is_obsolete(entry, duration):
     '''是否过期'''
-    if duration == -1:
+    if duration == -1: #永不过期
         return False
     return time.time() - entry['time'] > duration
 
