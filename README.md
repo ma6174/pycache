@@ -71,5 +71,4 @@ if result is None:
 
 ### Todo
 
-- 增加自定义缓存时间功能
 - 数据持久化

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #coding=utf-8
-from autocache import memorize
+from autocache_redis import memorize
 
 @memorize(3)
 def a_hard_function(a):
