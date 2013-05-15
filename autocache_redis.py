@@ -31,8 +31,7 @@ def memorize(duration = -1):
             result = function(*args, **kw)
             #保存结果
             r[key] = result
-            if duration != -1:
-                r.expire(key,duration)
+            r.expire(key,duration)
             return result
         return __memoize
     return _memoize
